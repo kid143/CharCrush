@@ -276,6 +276,7 @@
         [[_charMatrix objectAtIndex:one.col] setObject:one atIndex:one.row];
     });
     
+    // if the move can not blow up chars then the swap is invalid and should be undone.
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if ([_previousMove count] > 0) {
             NSArray *all = [_previousMove allObjects];
