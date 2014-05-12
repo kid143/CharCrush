@@ -27,6 +27,8 @@
     BOOL _isInAction;
     NSMutableArray *_charMatrix;
     NSMutableSet *_previousMove;
+    
+    CharLabel *_firstTouched;
 }
 
 // -----------------------------------------------------------------------
@@ -46,11 +48,14 @@
     self = [super init];
     if (!self) return(nil);
     
+    self.userInteractionEnabled = YES;
+    
     CCNodeColor *background = [CCNodeColor nodeWithColor:[CCColor blackColor]];
     [self addChild:background];
     
     // Initiate stage
     [self createCharMatrix];
+    _previousMove = [NSMutableSet set];
     
     _isInAction = YES;
     // done
@@ -126,11 +131,17 @@
             
             NSMutableSet *longest = [columnChain count] > [rowChain count] ? columnChain : rowChain;
             if ([longest count] >= 3) {
+                
+                if ([_previousMove count] > 0) {
+                    [_previousMove removeAllObjects];
+                }
+                
                 [self removeChar:longest];
                 return;
             }
         }
     }
+    
 }
 
 // -----------------------------------------------------------------------
@@ -194,7 +205,6 @@
     _isInAction = YES;
     for (CharLabel *charL in chain) {
         [[_charMatrix objectAtIndex:charL.col] setObject:[CharLabel getDummy] atIndex:charL.row];
-        NSLog(@"remove char at col:%d, row:%d, char:%@", charL.col, charL.row, charL.string);
         [charL runAction:[CCActionSequence actionWithArray:@[
                                                              [CCActionScaleTo actionWithDuration:0.3f scale:0.0f],
                                                              [CCActionRemove action]]]];
@@ -240,6 +250,40 @@
     free(colEmptyInfo);
 }
 
+- (void)swapPosition:(CharLabel *)one withAnother:(CharLabel *)other
+{
+    _isInAction = YES;
+    
+    if ([_previousMove count] > 0) {
+        [_previousMove removeAllObjects];
+    } else {
+        [_previousMove addObject:one];
+        [_previousMove addObject:other];
+    }
+    
+    CGPoint onePos = one.position;
+    CGPoint otherPos = other.position;
+    [one runAction:[CCActionMoveTo actionWithDuration:0.3f position:otherPos]];
+    [other runAction:[CCActionMoveTo actionWithDuration:0.3f position:onePos]];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        int oneCol = one.col;
+        int oneRow = one.row;
+        one.col = other.col;
+        one.row = other.row;
+        other.col = oneCol;
+        other.row = oneRow;
+        [[_charMatrix objectAtIndex:oneCol] setObject:other atIndex:oneRow];
+        [[_charMatrix objectAtIndex:one.col] setObject:one atIndex:one.row];
+    });
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if ([_previousMove count] > 0) {
+            NSArray *all = [_previousMove allObjects];
+            [self swapPosition:[all firstObject] withAnother:[all lastObject]];
+        }
+    });
+}
+
 // -----------------------------------------------------------------------
 #pragma mark - Helper Methods
 // -----------------------------------------------------------------------
@@ -252,9 +296,36 @@
 }
 
 // -----------------------------------------------------------------------
-#pragma mark - Button Callbacks
+#pragma mark - User Interactions
 // -----------------------------------------------------------------------
 
+- (void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    CGPoint touchLoc = [touch locationInWorld];
+    
+    for (CCNode *target in self.children) {
+        if ([target hitTestWithWorldPos:touchLoc]) {
+            if ([target.name isEqualToString:@"char"]) {
+                if (!_firstTouched) {
+                    _firstTouched = (CharLabel *)target;
+                    _firstTouched.colorRGBA = [CCColor redColor];
+                } else {
+                    CharLabel *secondTouched = (CharLabel *)target;
+                    _firstTouched.colorRGBA = [CCColor whiteColor];
+                    int diff = abs(_firstTouched.row + _firstTouched.col - secondTouched.row - secondTouched.col);
+                    if (_firstTouched == secondTouched || diff > 1) {
+                        // cancel previous touch if touch the same char or two chars are not neighbors
+                        _firstTouched = nil;
+                    } else {
+                        // swap different
+                        [self swapPosition:_firstTouched withAnother:secondTouched];
+                        _firstTouched = nil;
+                    }
+                }
+            }
+        }
+    }
+}
 
 // -----------------------------------------------------------------------
 @end
