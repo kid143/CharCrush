@@ -1,4 +1,4 @@
-tornado-utils
+Char Crush
 =============
 
 This is a demo game for my learning on cocos2d-iphone.
