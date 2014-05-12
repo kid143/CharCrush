@@ -210,8 +210,8 @@
 		63E8807A191A096B0014B6C5 /* LICENSE_Chipmunk.txt in Resources */ = {isa = PBXBuildFile; fileRef = 63E88079191A096B0014B6C5 /* LICENSE_Chipmunk.txt */; };
 		63E8807E191A096B0014B6C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E8807D191A096B0014B6C5 /* main.m */; };
 		63E88082191A096B0014B6C5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E88081191A096B0014B6C5 /* AppDelegate.m */; };
-		63E88085191A096B0014B6C5 /* HelloWorldScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E88084191A096B0014B6C5 /* HelloWorldScene.m */; };
-		63E88088191A096B0014B6C5 /* IntroScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E88087191A096B0014B6C5 /* IntroScene.m */; };
+		63E88088191A096B0014B6C5 /* MainScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E88087191A096B0014B6C5 /* MainScene.m */; };
+		63E880AD191CD1BB0014B6C5 /* CharLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E880AC191CD1BB0014B6C5 /* CharLabel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -649,10 +649,10 @@
 		63E8807D191A096B0014B6C5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Supporting Files/main.m"; sourceTree = "<group>"; };
 		63E88080191A096B0014B6C5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		63E88081191A096B0014B6C5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/AppDelegate.m; sourceTree = "<group>"; };
-		63E88083191A096B0014B6C5 /* HelloWorldScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HelloWorldScene.h; path = Classes/HelloWorldScene.h; sourceTree = "<group>"; };
-		63E88084191A096B0014B6C5 /* HelloWorldScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HelloWorldScene.m; path = Classes/HelloWorldScene.m; sourceTree = "<group>"; };
-		63E88086191A096B0014B6C5 /* IntroScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IntroScene.h; path = Classes/IntroScene.h; sourceTree = "<group>"; };
-		63E88087191A096B0014B6C5 /* IntroScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = IntroScene.m; path = Classes/IntroScene.m; sourceTree = "<group>"; };
+		63E88086191A096B0014B6C5 /* MainScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MainScene.h; path = Classes/MainScene.h; sourceTree = "<group>"; };
+		63E88087191A096B0014B6C5 /* MainScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MainScene.m; path = Classes/MainScene.m; sourceTree = "<group>"; };
+		63E880AB191CD1BB0014B6C5 /* CharLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharLabel.h; sourceTree = "<group>"; };
+		63E880AC191CD1BB0014B6C5 /* CharLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharLabel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1542,10 +1542,10 @@
 			children = (
 				63E88080191A096B0014B6C5 /* AppDelegate.h */,
 				63E88081191A096B0014B6C5 /* AppDelegate.m */,
-				63E88083191A096B0014B6C5 /* HelloWorldScene.h */,
-				63E88084191A096B0014B6C5 /* HelloWorldScene.m */,
-				63E88086191A096B0014B6C5 /* IntroScene.h */,
-				63E88087191A096B0014B6C5 /* IntroScene.m */,
+				63E880AB191CD1BB0014B6C5 /* CharLabel.h */,
+				63E880AC191CD1BB0014B6C5 /* CharLabel.m */,
+				63E88086191A096B0014B6C5 /* MainScene.h */,
+				63E88087191A096B0014B6C5 /* MainScene.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1664,6 +1664,7 @@
 				63E87F99191A096A0014B6C5 /* IOSVersion.m in Sources */,
 				63E87E4E191A09690014B6C5 /* CCDirector.m in Sources */,
 				63E87FB9191A096A0014B6C5 /* CCScrollView.m in Sources */,
+				63E880AD191CD1BB0014B6C5 /* CharLabel.m in Sources */,
 				63E87EAC191A09690014B6C5 /* CCResponder.m in Sources */,
 				63E87E43191A09690014B6C5 /* CCClippingNode.m in Sources */,
 				63E87ED6191A09690014B6C5 /* CCSpriteBatchNode.m in Sources */,
@@ -1707,7 +1708,7 @@
 				63E87F3D191A096A0014B6C5 /* NSThread+performBlock.m in Sources */,
 				63E87EC8191A09690014B6C5 /* CCShaderCache.m in Sources */,
 				63E88005191A096A0014B6C5 /* CCBSequenceProperty.m in Sources */,
-				63E88088191A096B0014B6C5 /* IntroScene.m in Sources */,
+				63E88088191A096B0014B6C5 /* MainScene.m in Sources */,
 				63E87F0C191A09690014B6C5 /* CCGLView.m in Sources */,
 				63E87ECF191A09690014B6C5 /* CCSprite.m in Sources */,
 				63E87E2B191A09690014B6C5 /* CCActionInterval.m in Sources */,
@@ -1747,7 +1748,6 @@
 				63E87ECB191A09690014B6C5 /* ccShaders.m in Sources */,
 				63E87FDF191A096A0014B6C5 /* matrix.c in Sources */,
 				63E87EF1191A09690014B6C5 /* CCTiledMapLayer.m in Sources */,
-				63E88085191A096B0014B6C5 /* HelloWorldScene.m in Sources */,
 				63E87FE5191A096A0014B6C5 /* neon_matrix_impl.c in Sources */,
 				63E87E6A191A09690014B6C5 /* CCLabelTTF.m in Sources */,
 				63E87F1F191A096A0014B6C5 /* NSEvent+CC.m in Sources */,
@@ -1989,6 +1989,7 @@
 				63E8808D191A096B0014B6C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		63E8808E191A096B0014B6C5 /* Build configuration list for PBXNativeTarget "CharCrush" */ = {
 			isa = XCConfigurationList;
@@ -1997,6 +1998,7 @@
 				63E88090191A096B0014B6C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
