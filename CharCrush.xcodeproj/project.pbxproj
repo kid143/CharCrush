@@ -212,6 +212,7 @@
 		63E88082191A096B0014B6C5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E88081191A096B0014B6C5 /* AppDelegate.m */; };
 		63E88088191A096B0014B6C5 /* MainScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E88087191A096B0014B6C5 /* MainScene.m */; };
 		63E880AD191CD1BB0014B6C5 /* CharLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E880AC191CD1BB0014B6C5 /* CharLabel.m */; };
+		63E880B21920B8B90014B6C5 /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 63E880B11920B8B90014B6C5 /* Readme.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -653,6 +654,7 @@
 		63E88087191A096B0014B6C5 /* MainScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MainScene.m; path = Classes/MainScene.m; sourceTree = "<group>"; };
 		63E880AB191CD1BB0014B6C5 /* CharLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharLabel.h; sourceTree = "<group>"; };
 		63E880AC191CD1BB0014B6C5 /* CharLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharLabel.m; sourceTree = "<group>"; };
+		63E880B11920B8B90014B6C5 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -717,6 +719,7 @@
 				63E87E1A191A09690014B6C5 /* Libraries */,
 				63E8807F191A096B0014B6C5 /* Classes */,
 				63E8807B191A096B0014B6C5 /* Supporting Files */,
+				63E880B11920B8B90014B6C5 /* Readme.md */,
 			);
 			path = CharCrush;
 			sourceTree = "<group>";
@@ -1638,6 +1641,7 @@
 				63E87E12191A09690014B6C5 /* Icon-Spotlight-iOS7.png in Resources */,
 				63E87E06191A09690014B6C5 /* Icon-76@2x.png in Resources */,
 				63E8807A191A096B0014B6C5 /* LICENSE_Chipmunk.txt in Resources */,
+				63E880B21920B8B90014B6C5 /* Readme.md in Resources */,
 				63E87E14191A09690014B6C5 /* Icon-Spotlight-iOS7@2x.png in Resources */,
 				63E87E04191A09690014B6C5 /* Icon-76.png in Resources */,
 				63E87FDA191A096A0014B6C5 /* ChangeLog in Resources */,
